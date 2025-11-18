@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserva de Vehículos</title>
+
+    <style>
+        .error { color: red; display: block; margin-top: 5px; }
+        fieldset { margin-bottom: 15px; }
+        legend { font-weight: bold; }
+        #resumen p { font-size: 1.1em; }
+        #precioTotal { font-weight: bold; color: blue; }
+        /* Añade los estilos necesarios para que se vea en rojo si falla el campo y en verde si es correcto */
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Reserva de Vehículo</h1>
+    <form method="post" action="procesar_reserva.php" id="alquilerForm">
+        
+        <fieldset>
+            <legend>Datos del Conductor</legend>
+            <p>
+                <label for="licencia">Nº de Licencia: </label>
+                <input type="" name="licencia" id="licencia">
+                <span class="error" id="errorLicencia"></span>
+            </p>
+            <p>
+                <label for="edad">Edad del Conductor: </label>
+                <input type="number" name="edad" id="edad" min="18">
+                <span class="error" id="errorEdad"></span>
+            </p>
+        </fieldset>
+
+        <fieldset>
+            <legend>Fechas de la Reserva</legend>
+             <p>
+                <label for="fechaRecogida">Fecha Recogida:</label>
+                <input type="datetime-local" name="fechaRecogida" id="fechaRecogida">
+            </p>
+             <p>
+                <label for="fechaDevolucion">Fecha Devolución:</label>
+                <input type="datetime-local" name="fechaDevolucion" id="fechaDevolucion">
+            </p>
+            <span class="error" id="errorFechas"></span>
+        </fieldset>
+
+        <fieldset>
+            <legend>Selección de Vehículo</legend>
+            <p>
+                <label for="categoria">Categoría:</label>
+                <select name="categoria" id="categoria" required>
+                    <option value="" disabled selected>Cargando...</option>
+                </select>
+            </p>
+            <p>
+                <label for="modelo">Modelo:</label>
+                <select name="modelo" id="modelo" required>
+                    <option value="" disabled selected>Selecciona una categoría primero...</option>
+                </select>
+            </p>
+            <span class="error" id="errorVehiculo"></span>
+        </fieldset>
+
+        <fieldset id="resumen">
+            <legend>Resumen de Precio</legend>
+            <p>Precio por Día: <span id="precioDia">...</span> €</p>
+            <p>Total Días: <span id="totalDias">...</span></p>
+            <hr>
+            <p>PRECIO TOTAL: <span id="precioTotal">0</span> €</p>
+        </fieldset>
+
+        <p>
+            <input type="reset" value="Borrar">
+            <input type="submit" value="Confirmar Reserva">
+        </p>
+    </form>
+</body>
+</html>

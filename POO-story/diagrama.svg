@@ -1,0 +1,115 @@
+<svg width="870" height="650" xmlns="http://www.w3.org/2000/svg">
+  <!-- Definitions for markers -->
+  <defs>
+    <!-- Inheritance Arrow (Hollow Triangle) -->
+    <marker id="arrow-inheritance" markerWidth="12" markerHeight="12" refX="12" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 L0,0" style="fill:white; stroke:black; stroke-width:1;" />
+    </marker>
+    <!-- Composition Diamond (Filled) -->
+    <marker id="diamond-composition" markerWidth="16" markerHeight="12" refX="16" refY="6" orient="auto">
+      <path d="M0,6 L8,0 L16,6 L8,12 L0,6" style="fill:black; stroke:black; stroke-width:1;" />
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#f8f9fa" />
+
+  <!-- Styles -->
+  <style>
+    .class-box { fill: #e6f2ff; stroke: #000; stroke-width: 1.5; }
+    .class-title { font-family: sans-serif; font-weight: bold; font-size: 14px; text-anchor: middle; }
+    .class-text { font-family: monospace; font-size: 12px; }
+    .separator { stroke: #000; stroke-width: 1; }
+    .relationship { stroke: #000; stroke-width: 1.5; fill: none; }
+  </style>
+
+  <!-- CLASS: Adventure -->
+  <g transform="translate(50, 50)">
+    <!-- Increased width to 260 for more right padding, decreased height to 120 since we removed one property -->
+    <rect x="0" y="0" width="260" height="120" class="class-box" />
+    <text x="130" y="20" class="class-title">Adventure</text>
+    <line x1="0" y1="30" x2="260" y2="30" class="separator" />
+    <text x="10" y="50" class="class-text">+ title: String</text>
+    <text x="10" y="65" class="class-text">- gm: String</text>
+    <!-- creationDate removed -->
+    <text x="10" y="80" class="class-text" text-decoration="underline">static eol: String</text>
+    <line x1="0" y1="90" x2="260" y2="90" class="separator" />
+    <text x="10" y="110" class="class-text">+ render(): String</text>
+  </g>
+
+  <!-- CLASS: StoryElement (Base) -->
+  <g transform="translate(350, 60)">
+    <rect x="0" y="0" width="220" height="100" class="class-box" />
+    <text x="110" y="20" class="class-title">StoryElement</text>
+    <line x1="0" y1="30" x2="220" y2="30" class="separator" />
+    <!-- No properties visible in base class test -->
+    <line x1="0" y1="50" x2="220" y2="50" class="separator" />
+    <text x="10" y="70" class="class-text">+ render(): String</text>
+    <text x="10" y="85" class="class-text">+ calculateMemory(): Number</text>
+  </g>
+
+  <!-- CLASS: Narrative -->
+  <g transform="translate(50, 250)">
+    <rect x="0" y="0" width="220" height="100" class="class-box" />
+    <text x="110" y="20" class="class-title">Narrative</text>
+    <line x1="0" y1="30" x2="220" y2="30" class="separator" />
+    <text x="10" y="50" class="class-text">+ content: String</text>
+    <line x1="0" y1="60" x2="220" y2="60" class="separator" />
+    <text x="10" y="80" class="class-text">+ render(): String</text>
+    <text x="10" y="95" class="class-text">+ calculateMemory(): Number</text>
+  </g>
+
+  <!-- CLASS: ProgressBar -->
+  <g transform="translate(290, 250)">
+    <rect x="0" y="0" width="220" height="100" class="class-box" />
+    <text x="110" y="20" class="class-title">ProgressBar</text>
+    <line x1="0" y1="30" x2="220" y2="30" class="separator" />
+    <text x="10" y="50" class="class-text">+ symbol: Char</text>
+    <text x="10" y="65" class="class-text">+ value: Number</text>
+    <line x1="0" y1="75" x2="220" y2="75" class="separator" />
+    <text x="10" y="95" class="class-text">+ render(): String</text>
+  </g>
+
+  <!-- CLASS: Scene -->
+  <g transform="translate(530, 250)">
+    <rect x="0" y="0" width="240" height="140" class="class-box" />
+    <text x="120" y="20" class="class-title">Scene</text>
+    <line x1="0" y1="30" x2="240" y2="30" class="separator" />
+    <text x="10" y="50" class="class-text">- elements: Array&lt;StoryElement&gt;</text>
+    <line x1="0" y1="60" x2="240" y2="60" class="separator" />
+    <text x="10" y="80" class="class-text">+ getElements(): Array</text>
+    <text x="10" y="95" class="class-text">+ addElements(...el): void</text>
+    <text x="10" y="110" class="class-text">+ calculateMemory(): Number</text>
+    <text x="10" y="125" class="class-text">+ render(): String</text>
+  </g>
+
+  <!-- CLASS: DialogueBlock -->
+  <g transform="translate(530, 450)">
+    <rect x="0" y="0" width="240" height="100" class="class-box" />
+    <text x="120" y="20" class="class-title">DialogueBlock</text>
+    <line x1="0" y1="30" x2="240" y2="30" class="separator" />
+    <text x="10" y="50" class="class-text">+ speaker: String</text>
+    <line x1="0" y1="60" x2="240" y2="60" class="separator" />
+    <text x="10" y="80" class="class-text">+ render(): String</text>
+  </g>
+
+  <!-- RELATIONSHIPS -->
+
+  <!-- Narrative -> StoryElement -->
+  <path d="M160,250 L160,200 L380,200 L380,162" class="relationship" marker-end="url(#arrow-inheritance)" />
+
+  <!-- ProgressBar -> StoryElement -->
+  <path d="M400,250 L400,200 L460,200 L460,162" class="relationship" marker-end="url(#arrow-inheritance)" />
+
+  <!-- Scene -> StoryElement -->
+  <path d="M650,250 L650,200 L540,200 L540,162" class="relationship" marker-end="url(#arrow-inheritance)" />
+
+  <!-- DialogueBlock -> Scene -->
+  <path d="M650,450 L650,392" class="relationship" marker-end="url(#arrow-inheritance)" />
+
+  <!-- Composition: Scene <>-> StoryElement -->
+  <!-- Drawing a line from Scene elements to StoryElement right side -->
+  <path d="M770,320 L800,320 L800,100 L572,100" class="relationship" marker-end="url(#diamond-composition)" stroke-dasharray="5,5"/>
+  <text x="760" y="192" font-family="sans-serif" font-size="10" transform="rotate(90 780,200)">Contiene (0..n)</text>
+
+</svg>
